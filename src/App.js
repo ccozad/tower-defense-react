@@ -1,18 +1,15 @@
 import React from 'react';
-
-function MyButton() {
-    return (
-      <button>
-        I&#39;m a button
-      </button>
-    );
-  }
+import { Routes, Route } from 'react-router-dom';
+import Game from './Game';
+import MapTest from './MapTest';
   
-  export default function MyApp() {
+  export default function App() {
     return (
-      <div>
-        <h1>Welcome to my app</h1>
-        <MyButton />
-      </div>
+        <div className="App">
+            <Routes>
+                <Route path="/" element={<Game />} />
+                <Route path="/map-test" element={<MapTest />} />
+            </Routes>
+        </div>
     );
   }
