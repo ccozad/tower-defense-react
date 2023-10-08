@@ -12,10 +12,18 @@
 
 # Commands
 
+Either launch methods serves the app on http://loclhost:8080
+
+## Local Dev
 - Install dependencies `npm install`
 - Build for dev `npm run build-dev`
 - Build for prod `npm run build-prod`
 - Run the local development server `npm run start`
+
+## Containerized
+
+- Launch containers `docker compose up`
+- Clean up containers `docker compose down`
 
 # References
 
