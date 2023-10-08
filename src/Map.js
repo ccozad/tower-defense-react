@@ -1,17 +1,25 @@
 import React from 'react';
-import MapCell from './MapCell';
+import PropTypes from 'prop-types';
+import MapCellRow from './MapCellRow';
 
-export default function Map() {
+function Map({rows, columns}) {
+    const listItems = [];
+    for (let i = 0; i < rows; i++) {
+        listItems.push(<MapCellRow key={i} columns={columns} />);
+    }
+
     return (
         <>
-            <div className="map-row">
-                <MapCell />
-                <MapCell />
+            <div className="map">
+                {listItems}
             </div>
-            <div className="map-row">
-                <MapCell />
-                <MapCell />
-            </div> 
         </>
     );
 }
+
+Map.propTypes = {
+    rows: PropTypes.number.isRequired,
+    columns: PropTypes.number.isRequired
+};
+
+export default Map;
