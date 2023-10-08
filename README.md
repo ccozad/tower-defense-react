@@ -29,4 +29,5 @@ Either launch methods serves the app on http://loclhost:8080
 
 - [Bare Bones React Setup](https://medium.com/swlh/react-without-create-react-app-setting-up-a-dev-build-from-scratch-fefd5d9d6baa)
 - [React Webpack Settings](https://blog.logrocket.com/versatile-webpack-configurations-react-application/)
+- [Tic Tac Toe Tutorial](https://react.dev/learn/tutorial-tic-tac-toe)
 - [React Game Jam](https://reactjam.com)
