@@ -12,7 +12,7 @@
 
 # Commands
 
-Either launch methods serves the app on http://loclhost:8080
+Either launch method serves the app on http://loclhost:8080
 
 ## Local Dev
 - Install dependencies `npm install`
