@@ -38,4 +38,4 @@ Either launch method serves the app on http://loclhost:8080
 
 # Demos
 
-![Map Cell Textures](/screenshots/map-cell-textures?raw=true "Map Cell Textures")
+![Map Cell Textures](/screenshots/map-cell-textures.png?raw=true "Map Cell Textures")
