@@ -1,16 +1,29 @@
 .map-cell {
-    background: #fff;
-    border: 1px solid #999;
+    background: url(tileset.png);
+    border: none;
     float: left;
-    font-size: 24px;
-    font-weight: bold;
-    line-height: 34px;
-    height: 34px;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 64px;
+    height: 64px;
+    padding: 0;
+    text-align: center;
+    width: 64px;
+}
+
+.map-cell-border {
+    background: url(tileset.png);
+    border: 1px solid #00ff;
+    float: left;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 64px;
+    height: 64px;
     margin-right: -1px;
     margin-top: -1px;
     padding: 0;
     text-align: center;
-    width: 34px;
+    width: 64px;
 }
 
 .map-row:after {

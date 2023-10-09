@@ -25,9 +25,17 @@ Either launch methods serves the app on http://loclhost:8080
 - Launch containers `docker compose up`
 - Clean up containers `docker compose down`
 
+# Recognition
+
+- [tower defense tilemap, OpenGameArt.org](https://opengameart.org/content/tower-defense-300-tilessprites)
+
 # References
 
 - [Bare Bones React Setup](https://medium.com/swlh/react-without-create-react-app-setting-up-a-dev-build-from-scratch-fefd5d9d6baa)
 - [React Webpack Settings](https://blog.logrocket.com/versatile-webpack-configurations-react-application/)
 - [Tic Tac Toe Tutorial](https://react.dev/learn/tutorial-tic-tac-toe)
 - [React Game Jam](https://reactjam.com)
+
+# Demos
+
+![Map Cell Textures](/screenshots/map-cell-textures?raw=true "Map Cell Textures")
