@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
                 <ul>
                     <li><Link to="/map-test">Map Test</Link></li>
                     <li><Link to="/level-1">Level 1</Link></li>
+                    <li><Link to="/move-test">Move Test</Link></li>
                 </ul>
             </div>
         </>
