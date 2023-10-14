@@ -13,7 +13,7 @@ function OrdinaryEnemy({
     y = 0,
     rotation = 0
 }) {
-    let className = showBorder? "map-cell-border" : "map-cell"
+    let className = showBorder? "enemy-border" : "enemy"
     let css = {};
     if (Object.prototype.hasOwnProperty.call(textureMap, texture)) {
         css = {
