@@ -25,6 +25,19 @@ export default function Level1() {
     const [timer, setTimer] = useState(0);
     const [currentPosition, setCurrentPosition] = useState(wayPoints[0]);
 
+    // Is the enemy at the final goal?
+    // Yes, stop the enemy.
+    // No, move the enemy.
+    // Is the enemy at the current way point?
+    // Yes, move the enemy to the next way point.
+    // No, move the enemy towards the current way point.
+    //
+    // Movement detials
+    // Move the enemy at a constant speed.
+    // Speed is measured in pixels per second.
+    // The enemy rotates to face the next way point.
+    // Each update, considered the amount of time that has passed since the last update.
+
     function rotateEnemyCCW() {
         setAngle((angle) => (angle + 1) % 360);
     }
