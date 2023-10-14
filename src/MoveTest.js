@@ -36,7 +36,7 @@ export default function Level1() {
     // Move the enemy at a constant speed.
     // Speed is measured in pixels per second.
     // The enemy rotates to face the next way point.
-    // Each update, considered the amount of time that has passed since the last update.
+    // Each update, consideres the amount of time that has passed since the last update.
 
     function rotateEnemyCCW() {
         setAngle((angle) => (angle + 1) % 360);
