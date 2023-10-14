@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Game from './Game';
 import MapTest from './MapTest';
 import Level1 from './Level1';
+import Level2 from './Level2';
 import MoveTest from './MoveTest';
   
   export default function App() {
@@ -12,6 +13,7 @@ import MoveTest from './MoveTest';
                 <Route path="/" element={<Game />} />
                 <Route path="/map-test" element={<MapTest />} />
                 <Route path="/level-1" element={<Level1 />} />
+                <Route path="/level-2" element={<Level2 />} />
                 <Route path="/move-test" element={<MoveTest />} />
                 <Route path="*" element={<h1>Not Found</h1>} />
             </Routes>
