@@ -36,7 +36,7 @@ Either launch method serves the app on http://loclhost:8080
 - [React Webpack Settings](https://blog.logrocket.com/versatile-webpack-configurations-react-application/)
 - [Tic Tac Toe Tutorial](https://react.dev/learn/tutorial-tic-tac-toe)
 - [React Game Jam](https://reactjam.com)
-
+- [Window::RequestAnimationFrame() method](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame)
 # Demos
 
 ![Map Cell Textures](/screenshots/map-cell-textures.png?raw=true "Map Cell Textures")
