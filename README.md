@@ -31,6 +31,7 @@ Either launch method serves the app on http://loclhost:8080
 
 # References
 
+- [Animating with javascript: from setInterval to requestAnimationFrame](https://hacks.mozilla.org/2011/08/animating-with-javascript-from-setinterval-to-requestanimationframe/)
 - [Bare Bones React Setup](https://medium.com/swlh/react-without-create-react-app-setting-up-a-dev-build-from-scratch-fefd5d9d6baa)
 - [High Performance React](https://www.braingu.com/blog/react-rendering-for-rapidly-changing-uis)
 - [React Webpack Settings](https://blog.logrocket.com/versatile-webpack-configurations-react-application/)
