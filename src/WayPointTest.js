@@ -18,20 +18,21 @@ import { useState } from 'react';
 export default function WayPointTest() {
     const wayPoints = [
         {x: 0, y: 0},
-        {x: 300, y: 300},
+        {x: 30, y: 30},
         {x: 500, y: 500}
     ];
-
-    const waypointThreshold = 10;
 
     const [angle, setAngle] = useState(0);
     const [started, setStarted] = useState(false);
     const [timer, setTimer] = useState(0);
-    const [startWayPoint, setStartWayPoint] = useState(0);
-    const [destinationWayPoint, setDestinationWayPoint] = useState(1);
-    // Unit of speed is px/sec
-    const [speed, setSpeed] = useState(1);
-    const [currentPosition, setCurrentPosition] = useState(wayPoints[startWayPoint]);
+    //const [startWayPoint, setStartWayPoint] = useState(0);
+    //const [destinationWayPoint, setDestinationWayPoint] = useState(1);
+    // Unit of speed is px/ms
+    //const [speed, setSpeed] = useState(1);
+    const [currentPosition, setCurrentPosition] = useState(wayPoints[0]);
+    //const [startTime, setStartTime] = useState(0);
+    //const [endTime, setEndTime] = useState(0);
+    //const [elapsedTime, setElapsedTime] = useState(0);
 
     // start an waypoint n
     // Move towards way point n + 1
@@ -51,27 +52,43 @@ export default function WayPointTest() {
     // The enemy rotates to face the next way point.
     // Each update, consideres the amount of time that has passed since the last update.
 
+    // This will not work because of the way React works.
+    //
+    // React may batch multiple setState() calls into a single update for performance.
+    // Because this.props and this.state may be updated asynchronously, 
+    // you should not rely on their values for calculating the next state.
+
     function moveTowardWayPoint() {
-        let dx = wayPoints[destinationWayPoint].x - currentPosition.x;
-        let dy = wayPoints[destinationWayPoint].y - currentPosition.y;
-        let distance = Math.sqrt(dx*dx + dy*dy);
-        // Refactor to use speed
-        let ratio = speed / distance;
-        let x = ratio * dx;
-        let y = ratio * dy;
-        let newAngle  = Math.atan2(-dy, dx) * 180 / Math.PI;
-        setAngle(newAngle);
-        setCurrentPosition((currentPosition) => {
-            return {x: currentPosition.x + x, y: currentPosition.y + y};
-        });
-        if (distance < waypointThreshold) {
-            setStartWayPoint((startWayPoint) => (startWayPoint + 1) % wayPoints.length);
-            setDestinationWayPoint((destinationWayPoint) => (destinationWayPoint + 1) % wayPoints.length);
-        }
+        //setEndTime(Date.now());
+        //setElapsedTime(endTime - startTime); // ms
+        let dx = wayPoints[1].x - currentPosition.x;
+        let dy = wayPoints[1].y - currentPosition.y;
+        //let distance = Math.sqrt(dx*dx + dy*dy); // px
+        //console.log("Distance: " + distance);
+
+        //if (distance < 5) {
+        //    console.log("Reached way point");
+        //    setCurrentPosition(wayPoints[destinationWayPoint]);
+        //    setStartWayPoint((startWayPoint) => (startWayPoint + 1) % wayPoints.length);
+        //    setDestinationWayPoint((destinationWayPoint) => (destinationWayPoint + 1) % wayPoints.length);
+        //} else {
+            let newAngle  = Math.atan2(-dy, dx) * 180 / Math.PI; // deg
+
+            setAngle(newAngle);
+            setCurrentPosition((currentPosition) => {
+                return {
+                    x: currentPosition.x + 1, 
+                    y: currentPosition.y + 1
+                };
+            });
+        //}
+
+        //setStartTime(endTime);
     }
     
     function start() {
         if(!started){
+            //setStartTime(Date.now());
             setTimer(setInterval(moveTowardWayPoint, 1000/24));
             setStarted(true);
         }
@@ -91,14 +108,16 @@ export default function WayPointTest() {
                     stop();
                     setAngle(0); 
                     setCurrentPosition(wayPoints[0]);
-                    setStartWayPoint(0);
-                    setDestinationWayPoint(1);
-                    setSpeed(10);
+                    //setStartWayPoint(0);
+                    //setDestinationWayPoint(1);
+                    //setElapsedTime(0);
+                    //setStartTime(0);
+                    //setEndTime(0);
+                    //setSpeed(1);
                 }}>Reset</button>
             </div>
             <div>
                 <p>Angle: {angle} Position: ( {currentPosition.x.toFixed(0)}, {currentPosition.y.toFixed(0)} )</p>
-                <p>Start Waypoint { startWayPoint } Destination Waypoint { destinationWayPoint }</p>
             </div>
             <div>
                 <OrdinaryEnemy 
