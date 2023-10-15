@@ -5,6 +5,7 @@ import MapTest from './MapTest';
 import Level1 from './Level1';
 import Level2 from './Level2';
 import MoveTest from './MoveTest';
+import WayPointTest from './WayPointTest';
   
   export default function App() {
     return (
@@ -15,6 +16,7 @@ import MoveTest from './MoveTest';
                 <Route path="/level-1" element={<Level1 />} />
                 <Route path="/level-2" element={<Level2 />} />
                 <Route path="/move-test" element={<MoveTest />} />
+                <Route path="/waypoint-test" element={<WayPointTest />} />
                 <Route path="*" element={<h1>Not Found</h1>} />
             </Routes>
         </div>

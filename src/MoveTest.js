@@ -15,7 +15,7 @@ import { useState } from 'react';
 
 
   
-export default function Level1() {
+export default function MoveTest() {
     const wayPoints = [
         {x: 0, y: 0},
         {x: 100, y: 100},
