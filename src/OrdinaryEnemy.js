@@ -1,4 +1,5 @@
 import React from 'react';
+import HealthBar from './HealthBar';
 import PropTypes from 'prop-types';
 
 const textureMap = {
@@ -10,7 +11,9 @@ function OrdinaryEnemy({
     textureDebug = false, 
     showBorder = false,
     wayPoints = [],
-    targetWayPoint = 1
+    targetWayPoint = 1,
+    health = 100,
+    maxHealth = 100
 }) {
     const x = React.useRef(0);
     const y = React.useRef(0);
@@ -51,27 +54,13 @@ function OrdinaryEnemy({
         if ( distanceTraveled.current >= distance.current ) {
             return false;
         } else {
-            //x.current += speed.current * deltaT;
             x.current += speed.current * direction.current.x;
             y.current += speed.current * direction.current.y;
-            /*if (x.current > wayPoints[end.current].x || y.current > wayPoints[end.current].y) {
-                x.current = wayPoints[end.current].x;
-                y.current = wayPoints[end.current].y;
-            }*/
+
             enemyRef.current.style.left = `${x.current}px`;
             enemyRef.current.style.top = `${y.current}px`;
         }
     }
-
-    /*React.useEffect(() => {
-        const dx = endPosition.x - startPosition.x;
-        const dy = endPosition.y - startPosition.y;
-        distance.current = Math.sqrt(dx*dx + dy*dy);
-        direction.current = {x: dx / distance.current, y: dy / distance.current};
-        rotation.current = Math.atan2(dy, dx) * 180 / Math.PI;
-        enemyRef.current.style.transform = `rotate(${rotation.current}deg)`;
-        animLoop(render, enemyRef.current);
-    }, []);*/
 
     React.useEffect(() => {
         console.log('Target way point changed');
@@ -92,20 +81,13 @@ function OrdinaryEnemy({
             animLoop(render, enemyRef.current);
         }
     }, [targetWayPoint]);
-
-    /*function refresh() {
-        setClassName(showBorder? "enemy-border" : "enemy");
-        setCss({
-            "backgroundPosition": `${textureMap[texture].x}px ${textureMap[texture].y}px`,
-            "left": `${x.current}px`,
-            "top": `${y.current}px`,
-            "transform": `rotate(${rotation.current}deg)`
-        });
-    }*/
     
     return (
         <>
-            <div ref={enemyRef} className={className} style={css}>{textureDebug ? texture: ''}</div>
+            <div ref={enemyRef} className={className} style={css}>
+                {textureDebug ? <p>{texture}</p> : null}
+                <HealthBar health={health} maxHealth={maxHealth} />
+            </div>
         </>
     );
 }
@@ -115,7 +97,9 @@ OrdinaryEnemy.propTypes = {
     textureDebug: PropTypes.bool,
     showBorder: PropTypes.bool,
     wayPoints: PropTypes.array,
-    targetWayPoint: PropTypes.number
+    targetWayPoint: PropTypes.number,
+    health: PropTypes.number,
+    maxHealth: PropTypes.number
 };
 
 export default OrdinaryEnemy;

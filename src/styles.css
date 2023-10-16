@@ -61,3 +61,22 @@
     width: 64px;
     position: relative;
 }
+
+.health-bar {
+    background-color: #e6e7e6;
+    height: 5px;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-bottom: -5px;
+}
+
+.health-bar-inner {
+    background-color: #109d10;
+    height: 5px;
+}
+
+.low-health {
+    background-color: #ad0707;
+}
