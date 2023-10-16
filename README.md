@@ -38,7 +38,14 @@ Either launch method serves the app on http://loclhost:8080
 - [Tic Tac Toe Tutorial](https://react.dev/learn/tutorial-tic-tac-toe)
 - [React Game Jam](https://reactjam.com)
 - [Window::RequestAnimationFrame() method](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame)
+
 # Demos
 
+## All map cell textures
 ![Map Cell Textures](/screenshots/map-cell-textures.png?raw=true "Map Cell Textures")
+
+## Level 1 Map
 ![Level 1](/screenshots/level-1.png?raw=true "Level 1")
+
+## Way Points Working
+[![Waypoint demo](https://img.youtube.com/vi/WoTdvSt-iyo/0.jpg)](https://www.youtube.com/watch?v=WoTdvSt-iyo)
