@@ -41,11 +41,5 @@ Either launch method serves the app on http://loclhost:8080
 
 # Demos
 
-## All map cell textures
-![Map Cell Textures](/screenshots/map-cell-textures.png?raw=true "Map Cell Textures")
-
-## Level 1 Map
-![Level 1](/screenshots/level-1.png?raw=true "Level 1")
-
-## Way Points Working
-[![Waypoint demo](https://img.youtube.com/vi/WoTdvSt-iyo/0.jpg)](https://www.youtube.com/watch?v=WoTdvSt-iyo)
+## Waypoints, Health Bar, and Map
+[![Waypoint demo](https://img.youtube.com/vi/0ch7giEoVkU/0.jpg)](https://www.youtube.com/watch?v=0ch7giEoVkU)
