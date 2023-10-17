@@ -16,21 +16,22 @@ export default function KitchenSinkTest() {
         [79, 45, 46, 46, 46, 46, 46, 46, 46, 46, 46, 46, 47, 79, 79],
         [79, 60, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 63, 46, 46],
         [79, 60, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61],
-        [79, 60, 61, 48, 76, 76, 76, 76, 76, 76, 76, 76, 76, 76, 76],
-        [79, 60, 61, 62, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79],
-        [79, 60, 61, 62, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79],
-        [79, 60, 61, 62, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79],
-        [79, 60, 61, 63, 46, 46, 46, 46, 46, 46, 46, 46, 46, 46, 46],
+        [79, 60, 61, 48, 76, 76, 76, 76, 76, 76, 76, 76, 76, 76, 61],
+        [79, 60, 61, 62, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 61],
+        [79, 60, 61, 62, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 61],
+        [79, 60, 61, 62, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 61],
+        [79, 60, 61, 63, 46, 46, 46, 46, 46, 46, 46, 46, 46, 46, 61],
         [79, 60, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61],
         [79, 60, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61, 61],
         [79, 75, 76, 76, 76, 76, 76, 76, 76, 76, 76, 76, 76, 76, 76],
         [79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79, 79]
     ];
 
-    const [targetWayPoint, setTargetWayPoint] = useState(1);
+    const [targetWayPoint, setTargetWayPoint] = useState(-1);
     const [health, setHealth] = useState(100);
-    const [showBorder, setShowBorder] = useState(true);
+    const [showBorder, setShowBorder] = useState(false);
     const [textureDebug, setTextureDebug] = useState(false);
+    const [show, setShow] = useState(false);
 
     const wayPointList = wayPoints.map((wayPoint, index) => {
         if (index === targetWayPoint % wayPoints.length) {
@@ -56,9 +57,43 @@ export default function KitchenSinkTest() {
     function increaseHealth() {
         setHealth((health) => (health + 10));
     }
+
+    function start() {
+        setTargetWayPoint(1)
+        setShow(true)
+    }
+
+    function stop() {
+        setTargetWayPoint(-1)
+        setShow(false)
+    }
     
     return (
         <>  
+        <div className="container">
+            <div className="game">
+                <div className='enemies'>
+                    <OrdinaryEnemy 
+                        texture={2} 
+                        textureDebug={textureDebug} 
+                        showBorder={showBorder} 
+                        wayPoints={wayPoints}
+                        targetWayPoint={targetWayPoint}
+                        health={health}
+                        maxHealth={100} 
+                        onWayPointReached={() => { nextWayPoint()}}
+                        show={show}
+                    />
+                </div>
+                <div className='map'>
+                    <Map 
+                        rows={12} 
+                        columns={15} 
+                        textures2D={mapTextures} 
+                        showBorder={showBorder} 
+                        textureDebug={textureDebug}/>
+                </div>
+            </div>
            <div className="controls">
                 <div>
                     <p>Debug Controls</p>
@@ -69,7 +104,8 @@ export default function KitchenSinkTest() {
                 </div>
                 <div>
                     <p>Way Point Controls</p>
-                    <button onClick={() => { nextWayPoint()}}>Next Way Point</button>
+                    <button onClick={() => { start()}}>Start</button>
+                    <button onClick={() => { stop()}}>Stop</button>
                     <p>Way Points</p>
                     <ol>
                         {wayPointList}
@@ -81,24 +117,7 @@ export default function KitchenSinkTest() {
                     <button onClick={() => increaseHealth()}>Increase Health</button>
                 </div>
             </div>
-            <div className="game">
-                <div className='enemies'>
-                    <OrdinaryEnemy 
-                        texture={2} 
-                        textureDebug={textureDebug} 
-                        showBorder={showBorder} 
-                        wayPoints={wayPoints}
-                        targetWayPoint={targetWayPoint}
-                        health={health}
-                        maxHealth={100} 
-                    />
-                </div>
-                <div className='map'>
-                    <Map rows={12} columns={15} textures2D={mapTextures} showBorder={showBorder} textureDebug={textureDebug}/>
-                </div>
-            </div>
-            
-            
+        </div>
         </>
     );
 }

@@ -11,17 +11,26 @@ export default function WayPointTest() {
         {x: 50, y: 200},       
     ];
 
-    const [targetWayPoint, setTargetWayPoint] = useState(1);
+    const [targetWayPoint, setTargetWayPoint] = useState(-11);
 
     function nextWayPoint() {
         setTargetWayPoint((targetWayPoint) => (targetWayPoint + 1));
+    }
+
+    function start() {
+        setTargetWayPoint(1)
+    }
+
+    function stop() {
+        setTargetWayPoint(-1)
     }
     
     return (
         <>
             <div>
                 <p>Way Point Controls</p>
-                <button onClick={() => { nextWayPoint()}}>Next Way Point</button>
+                <button onClick={() => { start()}}>Start</button>
+                <button onClick={() => { stop()}}>Stop</button>
             </div>
             <div>
                 <OrdinaryEnemy 
@@ -30,6 +39,9 @@ export default function WayPointTest() {
                     showBorder={true} 
                     wayPoints={wayPoints}
                     targetWayPoint={targetWayPoint}
+                    health={50}
+                    onWayPointReached={() => { nextWayPoint()}}
+                    show={true}
                 />
             </div>
             

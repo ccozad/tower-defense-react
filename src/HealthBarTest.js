@@ -26,7 +26,8 @@ export default function HealthBarTest() {
                     textureDebug={false} 
                     showBorder={true}
                     health={health}
-                    maxHealth={100} >
+                    maxHealth={100}
+                    show={true}>
 
                 </OrdinaryEnemy>
             </div>

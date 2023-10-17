@@ -65,11 +65,10 @@
 .health-bar {
     background-color: #e6e7e6;
     height: 5px;
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    margin-bottom: -5px;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 64px;
 }
 
 .health-bar-inner {
@@ -88,6 +87,7 @@
 .map {
     z-index: -1;
     position: relative;
+    min-width: 970px;
 }
 
 .enemies {
@@ -95,5 +95,13 @@
     position: absolute;
     x: 0;
     y: 0;
+}
+
+.container {
+    display: flex;
+  }
+
+.container>* {
+    margin: 0 10px;
 }
 

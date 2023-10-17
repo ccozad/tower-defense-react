@@ -14,8 +14,11 @@ function OrdinaryEnemy({
     wayPoints = [],
     targetWayPoint = 1,
     health = 100,
-    maxHealth = 100
+    maxHealth = 100,
+    onWayPointReached = null,
+    show = false
 }) {
+    const [healthBarRotation, setHealthBarRotation] = React.useState(0);
     const x = React.useRef(0);
     const y = React.useRef(0);
     const rotation = React.useRef(0);
@@ -26,15 +29,17 @@ function OrdinaryEnemy({
     const enemyRef = React.useRef(null);
     const start = React.useRef(0);
     const end = React.useRef(1);
+    const cancelAnimation = React.useRef(false);
     const css = {
-        "backgroundPosition": `${textureMap[texture].x}px ${textureMap[texture].y}px`
+        "backgroundPosition": `${textureMap[texture].x}px ${textureMap[texture].y}px`,
+        "visibility": show ? "visible" : "hidden"
     };
     const className =showBorder? "enemy-border" : "enemy";
 
     function animLoop(renderLocal, element) {
         var running, lastFrame = +new Date;
         function loop( now ) {
-            if ( running !== false ) {
+            if ( !cancelAnimation.current && running !== false ) {
                 requestAnimationFrame( loop, element );
                 var deltaT = now - lastFrame;
                 // do not render frame when deltaT is too high
@@ -48,25 +53,31 @@ function OrdinaryEnemy({
     }
 
     function render() {
-        const dx = x.current - wayPoints[start.current].x;
-        const dy = y.current - wayPoints[start.current].y;
-        distanceTraveled.current = Math.sqrt(dx*dx + dy*dy);
+        if ( enemyRef.current) {
+            const dx = x.current - wayPoints[start.current].x;
+            const dy = y.current - wayPoints[start.current].y;
+            distanceTraveled.current = Math.sqrt(dx*dx + dy*dy);
 
-        if ( distanceTraveled.current >= distance.current ) {
-            return false;
+            if ( distanceTraveled.current >= distance.current ) {
+                if (onWayPointReached) {
+                    onWayPointReached();
+                }
+                return false;
+            } else {
+                x.current += speed.current * direction.current.x;
+                y.current += speed.current * direction.current.y;
+
+                enemyRef.current.style.left = `${x.current}px`;
+                enemyRef.current.style.top = `${y.current}px`;
+            }
         } else {
-            x.current += speed.current * direction.current.x;
-            y.current += speed.current * direction.current.y;
-
-            enemyRef.current.style.left = `${x.current}px`;
-            enemyRef.current.style.top = `${y.current}px`;
+            return false;
         }
     }
 
     React.useEffect(() => {
-        console.log('Target way point changed');
-        console.log(`targetWayPoint: ${targetWayPoint}`);
-        if ( wayPoints.length > 1) {
+        if ( targetWayPoint > 0 && wayPoints.length > 1) {
+            cancelAnimation.current = false;
             start.current = (targetWayPoint - 1) % wayPoints.length;
             end.current = targetWayPoint % wayPoints.length;
             x.current = wayPoints[start.current].x;
@@ -78,18 +89,21 @@ function OrdinaryEnemy({
             distance.current = Math.sqrt(dx*dx + dy*dy);
             direction.current = {x: dx / distance.current, y: dy / distance.current};
             rotation.current = Math.atan2(dy, dx) * 180 / Math.PI;
+            enemyRef.current.style.transition = "transform 0.5s ease-out";
+            enemyRef.current.style.tracnsformOrigin = "top left";
             enemyRef.current.style.transform = `rotate(${rotation.current}deg)`;
+            setHealthBarRotation(rotation.current);
             animLoop(render, enemyRef.current);
+        } else {
+            cancelAnimation.current = true;
         }
     }, [targetWayPoint]);
-    
+
     return (
-        <>
-            <div ref={enemyRef} className={className} style={css}>
-                {textureDebug ? <p>{texture}</p> : null}
-                <HealthBar health={health} maxHealth={maxHealth} />
-            </div>
-        </>
+        <div ref={enemyRef} className={className} style={css}>
+            <HealthBar health={health} maxHealth={maxHealth} rotation={healthBarRotation}/>
+            {textureDebug ? <p>{texture}</p> : null}
+        </div>
     );
 }
 
@@ -100,7 +114,9 @@ OrdinaryEnemy.propTypes = {
     wayPoints: PropTypes.array,
     targetWayPoint: PropTypes.number,
     health: PropTypes.number,
-    maxHealth: PropTypes.number
+    maxHealth: PropTypes.number,
+    onWayPointReached: PropTypes.func,
+    show: PropTypes.bool
 };
 
 export default OrdinaryEnemy;
