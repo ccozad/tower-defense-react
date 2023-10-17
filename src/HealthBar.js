@@ -6,7 +6,14 @@ function HealthBar({health = 100, maxHealth = 100}) {
     const healthBarStyle = {
         width: `${healthPercentage}%`
     };
-    const healthBarInnerClassName = healthPercentage > 25 ? "health-bar-inner" : "health-bar-inner low-health";
+    let healthBarInnerClassName;
+    if(healthPercentage >= 80) {
+        healthBarInnerClassName = "health-bar-inner";
+    } else if (healthPercentage > 30) {
+        healthBarInnerClassName = "health-bar-inner medium-health";
+    } else {
+        healthBarInnerClassName = "health-bar-inner low-health";
+    }
     const showHealthBar = health < maxHealth;
 
     let bar;

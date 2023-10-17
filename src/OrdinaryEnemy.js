@@ -3,7 +3,8 @@ import HealthBar from './HealthBar';
 import PropTypes from 'prop-types';
 
 const textureMap = {
-    1: {x: -1088, y: -1536}
+    1: {x: -1088, y: -1536},
+    2: {x: -1152, y: -1536},
 }
 
 function OrdinaryEnemy({

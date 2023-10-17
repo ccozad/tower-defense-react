@@ -73,10 +73,27 @@
 }
 
 .health-bar-inner {
-    background-color: #109d10;
+    background-color: #09a947;
     height: 5px;
+}
+
+.medium-health {
+    background-color: #d9d32a;
 }
 
 .low-health {
     background-color: #ad0707;
 }
+
+.map {
+    z-index: -1;
+    position: relative;
+}
+
+.enemies {
+    z-index: 5;
+    position: absolute;
+    x: 0;
+    y: 0;
+}
+
