@@ -3,10 +3,7 @@ import { useRef, useState } from 'react';
 import { isCollision } from './Util';
 
 function CollisionTest() {
-    const [box1Info, setBox1Info] = useState([]);
-    const [box2Info, setBox2Info] = useState([]);
-    const [box3Info, setBox3Info] = useState([]);
-    const [box4Info, setBox4Info] = useState([]);
+    const [boxInfo, setBoxInfo] = useState([]);
 
     const div1 = useRef(null);
     const div2 = useRef(null);
@@ -16,43 +13,23 @@ function CollisionTest() {
     const divs = [div1, div2, div3, div4];
 
     function detectColisions() {
-        let box1Collisions = [];
-        let box2Collisions = [];
-        let box3Collisions = [];
-        let box4Collisions = [];
+        let collisions = [];
 
         divs.forEach((div) => {
             if (div.current !== null) {
-                if (isCollision(div1, div)) {
-                    box1Collisions.push(<li>Collisions with {div.current.id}</li>);
-                } else {
-                    box1Collisions.push(<li>No collisions with {div.current.id}</li>);
-                }
-
-                if (isCollision(div2, div)) {
-                    box2Collisions.push(<li>Collisions with {div.current.id}</li>);
-                } else {
-                    box2Collisions.push(<li>No collisions with {div.current.id}</li>);
-                }
-
-                if (isCollision(div3, div)) {
-                    box3Collisions.push(<li>Collisions with {div.current.id}</li>);
-                } else {
-                    box3Collisions.push(<li>No collisions with {div.current.id}</li>);
-                }
-
-                if (isCollision(div4, div)) {
-                    box4Collisions.push(<li>Collisions with {div.current.id}</li>);
-                } else {
-                    box4Collisions.push(<li>No collisions with {div.current.id}</li>);
-                }
+                divs.forEach((div2) => {
+                    if (div2.current !== null && div.current !== div2.current) {
+                        if (isCollision(div, div2)) {
+                            collisions.push(<li>Collisions between {div.current.id} and {div2.current.id}</li>);
+                        } else {
+                            collisions.push(<li>No collisions between {div.current.id} and {div2.current.id}</li>);
+                        }
+                    }
+                });
             }
         });
 
-        setBox1Info(box1Collisions);
-        setBox2Info(box2Collisions);
-        setBox3Info(box3Collisions);
-        setBox4Info(box4Collisions);
+        setBoxInfo(collisions);
     }
 
 
@@ -68,24 +45,11 @@ function CollisionTest() {
                 <div id="box4" ref={div4} style={{width: '100px', height: '100px', backgroundColor: 'yellow', position: 'absolute', top: '300px', left: '300px'}}>4</div>
             </div>
             <div className="info" style={{position: 'absolute', top: "50px", left: "500px"}}>
-                <p>Box 1 Collisions:</p>
+                <p>Collision Info:</p>
                 <ul>
-                    {box1Info}
-                </ul>
-                <p>Box 2 Collisions:</p>
-                <ul>
-                    {box2Info}
-                </ul>
-                <p>Box 3 Collisions:</p>
-                <ul>
-                    {box3Info}
-                </ul>
-                <p>Box 4 Collisions:</p>
-                <ul>
-                    {box4Info}
+                    {boxInfo}
                 </ul>
             </div>
-            
         </>
     )
 }
