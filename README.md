@@ -42,4 +42,28 @@ Either launch method serves the app on http://loclhost:8080
 # Demos
 
 ## Waypoints, Health Bar, and Map
+
 [![Waypoint demo](https://img.youtube.com/vi/0ch7giEoVkU/0.jpg)](https://www.youtube.com/watch?v=0ch7giEoVkU)
+
+## Collision Test
+
+![Collision Test](/screenshots/collision-demo.png?raw=true "Collision Test")
+
+# Capabilities
+
+- [ x ] Show a map of sprite textures
+- [ x ] Show enemy sprites
+- [ x ] Move enemies using a way point system
+- [ x ] Show enemy health 
+- [ x ] Detect collisions
+- [ ] Show tower sprites
+- [ ] Show tower health
+- [ ] Interactively place towers on the map
+- [ ] Multiple enemy support
+- [ ] Projectile system
+- [ ] Simulate tower response to a wave of enemies
+- [ ] Time a round
+- [ ] Score a round
+- [ ] Customize artwork to match React Game Jam 2023
+- [ ] Sound effects
+- [ ] Damage animations
