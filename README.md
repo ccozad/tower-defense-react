@@ -51,11 +51,11 @@ Either launch method serves the app on http://loclhost:8080
 
 # Capabilities
 
-- [ x ] Show a map of sprite textures
-- [ x ] Show enemy sprites
-- [ x ] Move enemies using a way point system
-- [ x ] Show enemy health 
-- [ x ] Detect collisions
+- [x] Show a map of sprite textures
+- [x] Show enemy sprites
+- [x] Move enemies using a way point system
+- [x] Show enemy health 
+- [x] Detect collisions
 - [ ] Show tower sprites
 - [ ] Show tower health
 - [ ] Interactively place towers on the map
