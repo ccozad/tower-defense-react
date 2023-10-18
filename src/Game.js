@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
             </div>
             <div>
                 <ul>
+                    <li><Link to="/tests/collision">Collision Test</Link></li>
                     <li><Link to="/tests/map">Map Test</Link></li>
                     <li><Link to="/tests/waypoint">Way Point Test</Link></li>
                     <li><Link to="/tests/health-bar">Health Bar Test</Link></li>
